@@ -1,0 +1,14 @@
+@font-face {
+  font-family: pt-sans;
+  src: url(../font/pt-sans.ttf);
+}
+
+@font-face {
+  font-family: Open-Sans-bold;
+  src: url(../font/2212.ttf);
+}
+
+@font-face {
+  font-family: Open-Sans;
+  src: url(../font/2211.ttf);
+}
