@@ -8,7 +8,7 @@ body {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  background: url(../picture/fon-1.jpg) no-repeat;
+  background-image: url(../picture/fon-1.jpg);
   background-size: cover;
   background-position: center;
 }

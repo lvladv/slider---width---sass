@@ -2,94 +2,95 @@ let slide = document.querySelectorAll(".slide");
 let fon = document.querySelector(".background");
 let imgSlide = document.querySelectorAll(".img-slide");
 let info = document.querySelector(".info-for-slide");
-let filtrSlideArr;
+
+class Slide {
+  constructor() {
+    this.sliderText = [
+      "Text - 1  ....",
+      "Text - 2  ....",
+      "Text - 3  ....",
+      "Text - 4  ....",
+      "Text - 5  ....",
+      "Text - 6  ...."
+    ];
+
+    this.sliderImg = [
+      "url(picture/fon-1.jpg)",
+      "url(picture/fon-2.jpg)",
+      "url(picture/fon-3.jpg)",
+      "url(picture/fon-4.jpg)",
+      "url(picture/fon-5.jpg)",
+      "url(picture/fon-6.jpg)"
+    ];
+  }
+
+  checkSlide() {
+    this.style.transform = "scale(1.5, 1.5)";
+
+    //   for (let i = 0; i < slide.length; i++) {
+    //     if (i != slide.indexOf(this)) {
+    //       imgSlide[i].style.transform = "scale(1, 1)";
+    //     }
+    //   }
+    // }
+  }
+}
+let slider = new Slide();
 
 function Slide1() {
-  fon.style.background = "url(picture/fon-1.jpg)";
   fon.style.backgroundSize = "cover";
-  info.innerHTML = "Text - 1  ....";
-  imgSlide[0].style.transform = "scale(1.5, 1.5)";
-  for (let i = 0; i < slide.length; i++) {
-    if (i != 0) {
-      imgSlide[i].style.transform = "scale(1, 1)";
-    }
-  }
+  info.innerHTML = slider.sliderText[0];
+  slider.checkSlide();
 }
 
 function Slide2() {
-  fon.style.background = "url(picture/fon-2.jpg)";
+  fon.style.background = slider.sliderImg[1];
   fon.style.backgroundSize = "cover";
-  info.innerHTML = "Text - 2  ....";
-  imgSlide[1].style.transform = "scale(1.5, 1.5)";
-  for (let i = 0; i < slide.length; i++) {
-    if (i != 1) {
-      imgSlide[i].style.transform = "scale(1, 1)";
-    }
-  }
+  slider.checkSlide();
 }
 
 function Slide3() {
-  fon.style.background = "url(picture/fon-3.jpg) no-repeat";
+  fon.style.background = slider.sliderImg[2];
   fon.style.backgroundSize = "cover";
 
-  info.innerHTML = "Text - 3  ....";
+  info.innerHTML = slider.sliderText[2];
 
-  imgSlide[2].style.transform = "scale(1.5, 1.5)";
-  for (let i = 0; i < slide.length; i++) {
-    if (i != 2) {
-      imgSlide[i].style.transform = "scale(1, 1)";
-    }
-  }
+  slider.checkSlide();
 }
 
 function Slide4() {
-  fon.style.background = "url(picture/fon-4.jpg) no-repeat";
+  fon.style.background = slider.sliderImg[3];
   fon.style.backgroundSize = "cover";
 
-  info.innerHTML = "Text - 4  ....";
+  info.innerHTML = slider.sliderText[3];
 
-  imgSlide[3].style.transform = "scale(1.5, 1.5)";
-  for (let i = 0; i < slide.length; i++) {
-    if (i != 3) {
-      imgSlide[i].style.transform = "scale(1, 1)";
-    }
-  }
+  slider.checkSlide();
 }
 
 function Slide5() {
-  fon.style.background = "url(picture/fon-5.jpg) no-repeat";
+  fon.style.background = slider.sliderImg[4];
   fon.style.backgroundSize = "cover";
 
-  info.innerHTML = "Text - 5  ....";
+  info.innerHTML = slider.sliderText[4];
 
-  imgSlide[4].style.transform = "scale(1.5, 1.5)";
-  for (let i = 0; i < slide.length; i++) {
-    if (i != 4) {
-      imgSlide[i].style.transform = "scale(1, 1)";
-    }
-  }
+  slider.checkSlide();
 }
 
 function Slide6() {
-  fon.style.background = "url(picture/fon-6.jpg) no-repeat";
+  fon.style.background = slider.sliderImg[5];
   fon.style.backgroundSize = "cover";
 
-  info.innerHTML = "Text - 6  ....";
+  info.innerHTML = slider.sliderText[5];
 
-  imgSlide[5].style.transform = "scale(1.5, 1.5)";
-  for (let i = 0; i < slide.length; i++) {
-    if (i != 5) {
-      imgSlide[i].style.transform = "scale(1, 1)";
-    }
-  }
+  slider.checkSlide();
 }
 
-slide[0].addEventListener("click", Slide1);
-slide[1].addEventListener("click", Slide2);
-slide[2].addEventListener("click", Slide3);
-slide[3].addEventListener("click", Slide4);
-slide[4].addEventListener("click", Slide5);
-slide[5].addEventListener("click", Slide6);
+imgSlide[0].addEventListener("click", Slide1);
+imgSlide[1].addEventListener("click", Slide2);
+imgSlide[2].addEventListener("click", Slide3);
+imgSlide[3].addEventListener("click", Slide4);
+imgSlide[4].addEventListener("click", Slide5);
+imgSlide[5].addEventListener("click", Slide6);
 
 var imageIndex = 1;
 
