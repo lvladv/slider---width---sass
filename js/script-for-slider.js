@@ -24,73 +24,41 @@ class Slide {
     ];
   }
 
-  checkSlide() {
-    this.style.transform = "scale(1.5, 1.5)";
-
-    //   for (let i = 0; i < slide.length; i++) {
-    //     if (i != slide.indexOf(this)) {
-    //       imgSlide[i].style.transform = "scale(1, 1)";
-    //     }
-    //   }
-    // }
+  checkSlide(slide) {
+    slide.style.transform = "scale(1.5, 1.5)";
   }
 }
 let slider = new Slide();
 
-function Slide1() {
+function SlideImg() {
+  // Получаем SRC картинки, по которой кликнул
+  let img = this.querySelectorAll("img")[0].getAttribute("src");
+  // !! получение индекса слайда через data-slide-index
+  let indexSlide = this.querySelectorAll("img")[0].getAttribute(
+    "data-slide-index"
+  );
+
+  // Помещаем SRC картинки в background
+  fon.style.background = `url(${img})`;
   fon.style.backgroundSize = "cover";
-  info.innerHTML = slider.sliderText[0];
-  slider.checkSlide();
+  info.innerHTML = slider.sliderText[indexSlide];
+
+  // This тут будет являться самим элементом, по которому мы кликнули и вызвали SlideImg
+  // Мы этот this передаём в checkSlide чтобы там уже обратиться к этому элементу
+  slider.checkSlide(this);
+
+  // !! уменьшение не выделенного слайда
+  for (let i = 0; i < slide.length; i++) {
+    if (i != indexSlide) {
+      imgSlide[i].style.transform = "scale(1, 1)";
+    }
+  }
 }
 
-function Slide2() {
-  fon.style.background = slider.sliderImg[1];
-  fon.style.backgroundSize = "cover";
-  slider.checkSlide();
+// Здесь мы циклом проходим по всем слайдам и вешаем на них обработчик событий в который передаём функцию SlideImg
+for (var i = 0; i < imgSlide.length; i++) {
+  imgSlide[i].addEventListener("click", SlideImg);
 }
-
-function Slide3() {
-  fon.style.background = slider.sliderImg[2];
-  fon.style.backgroundSize = "cover";
-
-  info.innerHTML = slider.sliderText[2];
-
-  slider.checkSlide();
-}
-
-function Slide4() {
-  fon.style.background = slider.sliderImg[3];
-  fon.style.backgroundSize = "cover";
-
-  info.innerHTML = slider.sliderText[3];
-
-  slider.checkSlide();
-}
-
-function Slide5() {
-  fon.style.background = slider.sliderImg[4];
-  fon.style.backgroundSize = "cover";
-
-  info.innerHTML = slider.sliderText[4];
-
-  slider.checkSlide();
-}
-
-function Slide6() {
-  fon.style.background = slider.sliderImg[5];
-  fon.style.backgroundSize = "cover";
-
-  info.innerHTML = slider.sliderText[5];
-
-  slider.checkSlide();
-}
-
-imgSlide[0].addEventListener("click", Slide1);
-imgSlide[1].addEventListener("click", Slide2);
-imgSlide[2].addEventListener("click", Slide3);
-imgSlide[3].addEventListener("click", Slide4);
-imgSlide[4].addEventListener("click", Slide5);
-imgSlide[5].addEventListener("click", Slide6);
 
 var imageIndex = 1;
 
