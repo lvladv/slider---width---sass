@@ -134,10 +134,11 @@ body {
   flex-direction: row;
   justify-content: space-between;
   margin-top: 21px;
-}
-.switch img {
-  width: 100%;
-  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 .img-slide {
   display: block;
