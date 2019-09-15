@@ -2,9 +2,9 @@ const gulp = require("gulp");
 const sass = require("gulp-sass");
 const concat = require("gulp-concat");
 const autoprefixer = require("gulp-autoprefixer");
-const imagemin = require("gulp-imagemin");
+const del = require("del");
 
-gulp.task("sass", function() {
+async function Sass() {
   return gulp
     .src("./src/style/**/*.scss")
     .pipe(concat("styles.css"))
@@ -16,18 +16,26 @@ gulp.task("sass", function() {
       })
     )
     .pipe(gulp.dest("./build/css"));
-});
+}
 
-gulp.task("scripts", function() {
+async function scripts() {
   return gulp
     .src("./src/js/**/*.js")
     .pipe(concat("scripts.js"))
     .pipe(gulp.dest("./build/js"));
+}
+
+gulp.task("del", function() {
+  return del(["build/*"]);
 });
 
-gulp.task("img", () =>
-  gulp
-    .src("src/picture/*")
-    .pipe(imagemin())
-    .pipe(gulp.dest("build/img"))
-);
+gulp.task("sass", Sass);
+gulp.task("scripts", scripts);
+
+gulp.task("watch-sass", function() {
+  gulp.watch("./src/style/**/*.scss", Sass);
+});
+
+gulp.task("watch-scripts", function() {
+  gulp.watch("./src/js/**/*.js", scripts);
+});
